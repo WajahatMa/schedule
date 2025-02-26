@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <h2>2025 Calendar</h2>
+        <div id="calendar"></div>
+        <button id="logout">Logout</button> <!-- Add Logout Button -->
+    </div>
+    
+    <script>
+        // 🔹 Add this login check at the top of the script inside calendar.html
+        if (!localStorage.getItem("loggedIn")) {
+            window.location.href = "index.html"; // Redirect to login if not authenticated
+        }
+
+        function generateCalendar(year) {
+            const calendarDiv = document.getElementById("calendar");
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let currentMonth = new Date().getMonth();
+
+            months.forEach((month, index) => {
+                let monthDiv = document.createElement("div");
+                monthDiv.classList.add("month");
+                if (index === currentMonth) {
+                    monthDiv.classList.add("current-month");
+                }
+                monthDiv.innerHTML = `<h3>${month} ${year}</h3>`;
+                calendarDiv.appendChild(monthDiv);
+            });
+        }
+
+        generateCalendar(2025);
+
+        // Logout functionality
+        document.getElementById("logout").addEventListener("click", function() {
+            localStorage.removeItem("loggedIn"); // Clear login state
+            window.location.href = "index.html"; // Redirect to login page
+        });
+    </script>
+</body>
+</html>
