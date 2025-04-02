@@ -15,11 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (username === correctUsername && password === correctPassword) {
                 localStorage.setItem("loggedIn", "true"); // Store login state
-<<<<<<< HEAD
                 window.location.href = "calendar.html"; // Redirect to Calendar
-=======
-                window.location.href = "./calendar.html";// Redirect to Calendar
->>>>>>> 4b19eeb (Initial commit for backend)
             } else {
                 document.getElementById("error-message").innerText = "Invalid username or password.";
             }
